@@ -1,0 +1,629 @@
+{
+	"info": {
+		"_postman_id": "b1fedead-17d6-4041-95c9-f784add8c5fa",
+		"name": "Parcel Delivery System Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42338612"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Zahidul Islam\",\r\n    \"email\" : \"zahid12@gmail.com\",\r\n    \"password\": \"Zahid@12\",\r\n    \"role\": \"SENDER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@example.com\",\r\n    \"password\": \"abc89p*sffK\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/auth/login",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Parcel",
+			"item": [
+				{
+					"name": "My Parcels",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZGI2YzZmMzEwYTc3YWZlZDdjOGMiLCJlbWFpbCI6Im1laGVkeUBnbWFpbC5jb20iLCJyb2xlIjoiUkVDRUlWRVIiLCJpYXQiOjE3NTM4NzEzMjgsImV4cCI6MTc1NDQ3NjEyOH0.4GKtcr9gLJbYxU8mKn6SqMs98fRugLeC_GZSZaJAqzc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Programmin Hero Book 2\",\r\n    \"type\": \"Document\",\r\n    \"weight\": 5,\r\n    \"fee\": 490,\r\n    \"senderId\": \"6889d34a477574ca2bc25893\",\r\n    \"receiverId\": \"6889d37e477574ca2bc25896\",\r\n    \"pickupAddress\": \"Dhaka\",\r\n    \"deliveryAddress\": \"Khulna\" \r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/me?filter=Confirm",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"me"
+							],
+							"query": [
+								{
+									"key": "filter",
+									"value": "Confirm"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Parcel Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhjYzZjYjliNzA5ZThjYWRhZGNkNGUiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0MTI4NzA0LCJleHAiOjE3NTQxMjk2MDR9.8YI8LZxwyWKL36BRjT1GoMjWkG0Fzu2Ef7uF74cCpmA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Programming Hero Book 2.0\",\r\n    \"type\": \"Package\",\r\n    \"weight\": 10,\r\n    \"fee\": 899,\r\n    \"senderId\": \"688de0db617447f8ff8855e1\",\r\n    \"receiverId\": \"688ddf4ae70729cbf0613522\",\r\n    \"pickupAddress\": \"Jashore\",\r\n    \"deliveryAddress\": \"Khulna\" \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/request",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"request"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Parcel Request",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhjYzZjYjliNzA5ZThjYWRhZGNkNGUiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0MTI4NzA0LCJleHAiOjE3NTQxMjk2MDR9.8YI8LZxwyWKL36BRjT1GoMjWkG0Fzu2Ef7uF74cCpmA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"currentStatus\" : \"In Transit\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/688de1d6617447f8ff8855ea",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"688de1d6617447f8ff8855ea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Parcel Request Cancel",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQyMzMyYzY5YWQ2ZTg1YzFmMDQiLCJlbWFpbCI6Im9iaWR5aGFzYW5AZ21haWwuY29tIiwicm9sZSI6IlNFTkRFUiIsImlhdCI6MTc1Mzk0Nzc5NiwiZXhwIjoxNzU0NTUyNTk2fQ.1EPbSH8bElEC-03JiUJ6qY_vJjTskyM-mRLRZBn8RWY",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"zahid@gmail.com\",\r\n    \"password\": \"Zahid@12\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/688b1eda3a45608d0064dfbc/cancel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"688b1eda3a45608d0064dfbc",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Incoming Parcel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Programmin Hero Book 2\",\r\n    \"type\": \"Document\",\r\n    \"weight\": 5,\r\n    \"fee\": 490,\r\n    \"senderId\": \"6889d34a477574ca2bc25893\",\r\n    \"receiverId\": \"6889d37e477574ca2bc25896\",\r\n    \"pickupAddress\": \"Dhaka\",\r\n    \"deliveryAddress\": \"Khulna\" \r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/incoming",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"incoming"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Parcel Request Confirm",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/688b1eda3a45608d0064dfbc/confirm",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"688b1eda3a45608d0064dfbc",
+								"confirm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Delivery Parcel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/delivery",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set Parcel Request Delivered",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"mehedy@gmail.com\",\r\n    \"password\": \"Obidy@12\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/688b1eda3a45608d0064dfbc/delivered",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"688b1eda3a45608d0064dfbc",
+								"delivered"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Parcel Tracking",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhjYzZjYjliNzA5ZThjYWRhZGNkNGUiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0MTI4NzA0LCJleHAiOjE3NTQxMjk2MDR9.8YI8LZxwyWKL36BRjT1GoMjWkG0Fzu2Ef7uF74cCpmA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/track/TRK-1754128854155-457",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"track",
+								"TRK-1754128854155-457"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWQwZDMyYzY5YWQ2ZTg1YzFmMDEiLCJlbWFpbCI6ImFiaWRAZ21haWwuY29tIiwicm9sZSI6IlJFQ0VJVkVSIiwiaWF0IjoxNzUzOTQ4MzU3LCJleHAiOjE3NTQ1NTMxNTd9.cYuQntdmJiyt21rRRqjETeTjwLx2xiwhUtPIeKiQUd4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Parcel",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZDMxMDQ3NzU3NGNhMmJjMjU4OGYiLCJlbWFpbCI6ImFkbWlucGRzQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzg3MjkwMiwiZXhwIjoxNzU0NDc3NzAyfQ.E0lYBtlX5IBOyMSoyXogKI_0OChHT3Uh2iUd2UXFHOg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Parcel By Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZDMxMDQ3NzU3NGNhMmJjMjU4OGYiLCJlbWFpbCI6ImFkbWlucGRzQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzg3MjkwMiwiZXhwIjoxNzU0NDc3NzAyfQ.E0lYBtlX5IBOyMSoyXogKI_0OChHT3Uh2iUd2UXFHOg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/update/688b1eda3a45608d0064dfbc",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"update",
+								"688b1eda3a45608d0064dfbc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Parcel By Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODg5ZDMxMDQ3NzU3NGNhMmJjMjU4OGYiLCJlbWFpbCI6ImFkbWlucGRzQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzg3MjkwMiwiZXhwIjoxNzU0NDc3NzAyfQ.E0lYBtlX5IBOyMSoyXogKI_0OChHT3Uh2iUd2UXFHOg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/parcel/delete/6889db9d6f310a77afed7c91",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"parcel",
+								"delete",
+								"6889db9d6f310a77afed7c91"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Get All User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhjYzZjYjliNzA5ZThjYWRhZGNkNGUiLCJlbWFpbCI6ImFkbWluQGV4YW1wbGUuY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzU0MTI4NzA0LCJleHAiOjE3NTQxMjk2MDR9.8YI8LZxwyWKL36BRjT1GoMjWkG0Fzu2Ef7uF74cCpmA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Programmin Hero Book 2\",\r\n    \"type\": \"Document\",\r\n    \"weight\": 5,\r\n    \"fee\": 490,\r\n    \"senderId\": \"6889d34a477574ca2bc25893\",\r\n    \"receiverId\": \"6889d37e477574ca2bc25896\",\r\n    \"pickupAddress\": \"Dhaka\",\r\n    \"deliveryAddress\": \"Khulna\" \r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/user",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User By Admin",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWUwODk4ODY5OGZkOWYzMDQyZjEiLCJlbWFpbCI6ImFkbWlucGRzQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk0NzY2MiwiZXhwIjoxNzU0NTUyNDYyfQ.OKazVDZprDjb-3kkea2Z96AAwElN-HTNXgFqWyqLSTI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mehedy Hasan Tamim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/user/688b1d3c32c69ad6e85c1f07",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"688b1d3c32c69ad6e85c1f07"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete User By Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2ODhiMWUwODk4ODY5OGZkOWYzMDQyZjEiLCJlbWFpbCI6ImFkbWlucGRzQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTc1Mzk0NzY2MiwiZXhwIjoxNzU0NTUyNDYyfQ.OKazVDZprDjb-3kkea2Z96AAwElN-HTNXgFqWyqLSTI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Mehedy Hasan Tamim\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/v1/user/688b1e5699219c5ed5d9e677",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								"688b1e5699219c5ed5d9e677"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "https://parcel-delivery-system-backend-woad.vercel.app",
+			"type": "default"
+		}
+	]
+}
